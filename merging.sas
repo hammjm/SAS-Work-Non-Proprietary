@@ -14,11 +14,11 @@ proc import out = WORK.datatwo
 run;
 
 *Either method used needs the data to be sorted by ID*;
-proc sort data = snew.First250k_novkay nodupkey out=work.x;
+proc sort data = WORK.dataone nodupkey out=work.x;
 	by Customer_ID;
 	run;
   
-proc sort data = snew.Sample_analysis_woevars nodupkey out=work.y;
+proc sort data = WORK.datatwo nodupkey out=work.y;
 	by Customer_ID;
 	run;
   
@@ -32,6 +32,6 @@ run;
 
 *Another way to do this but with the One-to-One method*;
 data work.onetoone;
-	set snew.Sample_analysis_woevars;
-	set snew.First250k_novkay;
+	set WORK.dataone;
+	set WORK.datatwo;
 	run;
